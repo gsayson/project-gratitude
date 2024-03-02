@@ -1,7 +1,7 @@
 import Image from "next/image"
 import {PLeftArrow} from "@/components/icons"
 import {auth} from "@/common/auth"
-import {SignIn} from "@/components/auth-components"
+import {AuthManagementComponent} from "@/components/auth-components"
 
 export async function Header() {
   const session = await auth()
@@ -11,8 +11,8 @@ export async function Header() {
           <a className="mx-2">Welcome, {session?.user?.name}!</a>
           <a className="mx-2">Write</a>
         </div>
-        <div>
-          <SignIn/>
+        <div className="mr-4 hover:cursor-pointer border-b border-b-zinc-700 hover:border-b-white transition">
+          <AuthManagementComponent loggedIn={session != null}/>
         </div>
       </header>
   )

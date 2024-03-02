@@ -19,11 +19,8 @@ export const {
     })
   ],
   callbacks: {
-    async signIn({ account, profile }) {
-      if(account!.provider === "google") {
-        return profile!.email!.endsWith("@students.edu.sg")
-      }
-      return false
+    async signIn({profile }) {
+      return profile!.email!.endsWith("@students.edu.sg") && profile!.name!.endsWith("(Punggolss)")
     },
   },
   pages: {

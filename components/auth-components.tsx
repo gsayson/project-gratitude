@@ -1,7 +1,8 @@
 "use client"
 
-import {signIn} from "next-auth/react"
+import {signIn, signOut} from "next-auth/react"
 
-export function SignIn() {
-  return <p onClick={() => signIn("google")}>Sign in</p>
+export function AuthManagementComponent(props: { loggedIn: boolean }) {
+  return !props.loggedIn ? <p onClick={() => signIn("google")}>Sign in</p> :
+      <p onClick={() => signOut()}>Sign out</p>
 }
