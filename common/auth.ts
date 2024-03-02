@@ -1,7 +1,10 @@
 import NextAuth from "next-auth"
 import Google from "next-auth/providers/google"
 
-export default NextAuth({
+export const {
+  handlers: { GET, POST },
+  auth,
+} = NextAuth({
   providers: [
     Google({
       clientId: process.env.GOOGLE_ID!,
@@ -22,5 +25,8 @@ export default NextAuth({
       }
       return false
     },
+  },
+  pages: {
+    error: "/auth/error"
   }
 })

@@ -1,17 +1,18 @@
 import Image from "next/image"
 import {PLeftArrow} from "@/components/icons"
-import {useSession} from "next-auth/react";
+import {auth} from "@/common/auth"
+import {SignIn} from "@/components/auth-components"
 
-export function Header() {
-  const { data: session, status } = useSession()
+export async function Header() {
+  const session = await auth()
   return (
       <header className="w-screen px-1 py-2 md:px-2 md:py-4 bg-zinc-950 flex justify-between border-b-2 border-b-zinc-800 items-center">
         <div className="x-space-2">
-          <a className="mx-2">Home</a>
+          <a className="mx-2">Welcome, {session?.user?.name}!</a>
           <a className="mx-2">Write</a>
         </div>
         <div>
-
+          <SignIn/>
         </div>
       </header>
   )
