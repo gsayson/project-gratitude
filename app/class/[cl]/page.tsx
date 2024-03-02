@@ -1,13 +1,16 @@
 import Image from "next/image";
 import {MessageCard} from "@/components/cards";
 import {notFound} from "next/navigation";
+import {sql} from "@vercel/postgres";
+import {PGMessage} from "@/common/types";
 
-export default function ClassPage({ params }: { params: {cl: string} }) {
+export default async function ClassPage({ params }: { params: {cl: string} }) {
   // safety: at(1) != undefined because params.cl.length == 2 is guaranteed to be true
-  if(params.cl.length != 2 || !params.cl.startsWith("4") || !["A", "B", "C", "D", "E"].includes(params.cl.at(1)!)) {
+  if(params.cl.length != 2 || !params.cl.startsWith("4") || !["A", "B", "C", "D", "E", "F", "G", "H", "I"].includes(params.cl.at(1)!)) {
     notFound()
   }
-
+  const { rows } = await sql`SELECT * from RESPONSES where class=${params.cl}`
+  const responses = rows.map(row => row as PGMessage)
   return (
       <main className="flex min-h-screen flex-col items-center justify-between p-24">
         <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
@@ -45,9 +48,9 @@ export default function ClassPage({ params }: { params: {cl: string} }) {
         </div>
 
         <div className="mt-16 mb-16 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-3 lg:text-left">
-          <MessageCard name="Foo bar" desc="Test 1234"/>
-          <MessageCard name="Gerard Sayson" desc="A notable class"/>
-          <MessageCard name="Santos Jr" desc="A notable class"/>
+          {responses.map((x, index) => {
+            return <MessageCard desc={x.message} key={index}/>
+          })}
         </div>
       </main>
   );
