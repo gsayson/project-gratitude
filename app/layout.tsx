@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { Lato } from "next/font/google";
+import { IBM_Plex_Sans } from "next/font/google";
 import "./globals.css";
 import React from "react";
+import {Footer, Header} from "@/components/matter";
 
-const inter = Lato({ subsets: ["latin"], weight: ["400", "700", "900"] });
+const inter = IBM_Plex_Sans({ subsets: ["latin"], weight: ["400", "600", "700"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,7 +18,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <Header/>
+        {children}
+        <Footer/>
+      </body>
     </html>
   );
 }

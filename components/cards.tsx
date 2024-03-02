@@ -3,7 +3,7 @@ import {PRightArrow} from "@/components/icons";
 export function ClassCard(properties: { name: string, desc: string, url?: string }) {
     return <a
         href={properties.url}
-        className="m-1 dark:bg-zinc-800 group rounded-lg border border-zinc-200 dark:border-transparent px-4 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+        className="m-1 bg-zinc-800 group rounded-lg border px-4 py-4 border-transparent transition-colors hover:border-neutral-700 hover:bg-neutral-800/30"
     >
         <h2 className={`mb-3 text-2xl font-semibold`}>
             {properties.name}&nbsp;
@@ -18,7 +18,7 @@ export function ClassCard(properties: { name: string, desc: string, url?: string
 }
 
 export function MessageCard(properties: { desc: string }) {
-    return <div className="m-1 dark:bg-zinc-800 group rounded-lg border border-zinc-200 dark:border-transparent px-4 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30">
+    return <div className="m-1 bg-zinc-800 group rounded-lg border border-transparent px-4 py-4 transition-colors dark:border-neutral-700 hover:bg-neutral-800/30">
         <p className={`m-0 max-w-[30ch] text-sm`}>{properties.desc}</p>
     </div>
 }
