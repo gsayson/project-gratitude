@@ -1,5 +1,3 @@
-import Image from "next/image"
-import {PLeftArrow} from "@/components/icons"
 import {auth} from "@/lib/auth"
 import {AuthManagementComponent} from "@/components/auth-components"
 import Link from "next/link"
