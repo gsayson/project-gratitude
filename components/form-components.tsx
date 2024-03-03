@@ -47,7 +47,7 @@ export function PostForm({ acc, message }: { acc: AccountType, message: PGMessag
   return (
       <form action={async (x: FormData) => {
         setSubmitting(true)
-        setState(await responseMutate(x.get("nickname"), x.get("clazz"), x.get("response"), message.email))
+        setState(await responseMutate(x.get("nickname")!.toString(), x.get("clazz")!.toString(), x.get("response")!.toString(), message.email))
         setSubmitting(false)
       }} inert={submitting}>
         <TextInput maxLength={20} id="nickname" name="nickname" autoComplete={"off"} autoCorrect={"off"}
