@@ -45,7 +45,7 @@ export function PostForm({ acc, message }: { acc: AccountType, message: PGMessag
   const [state, setState] = useState({message: ""})
   const [submitting, setSubmitting] = useState(false)
   return (
-      <form action={async (x: formData) => {
+      <form action={async (x: FormData) => {
         setSubmitting(true)
         setState(await responseMutate(x.get("nickname"), x.get("clazz"), x.get("response"), message.email))
         setSubmitting(false)
