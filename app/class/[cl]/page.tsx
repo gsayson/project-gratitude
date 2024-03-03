@@ -8,7 +8,7 @@ import {auth} from "@/lib/auth";
 export default async function ClassPage({ params }: { params: {cl: string} }) {
   const session = await auth()
   // safety: at(1) != undefined because params.cl.length == 2 is guaranteed to be true
-  if(params.cl.length != 2 || !params.cl.startsWith("4") || !["A", "B", "C", "D", "E", "F", "G", "H", "I", "T"].includes(params.cl.at(1)!)) {
+  if(params.cl === "5A") {} else if(params.cl.length != 2 || !params.cl.startsWith("4") || !["A", "B", "C", "D", "E", "F", "G", "H", "I", "T"].includes(params.cl.at(1)!)) {
     notFound()
   }
   const { rows } = await sql`SELECT * from RESPONSES where clazz=${params.cl}`

@@ -64,6 +64,7 @@ export function PostForm({ acc, message }: { acc: AccountType, message: PGMessag
               <SelectLabel>Form classes</SelectLabel>
               {["A", "B", "C", "D", "E", "F", "G", "H", "I"].map((x, index) => <SelectItem key={index}
                                                                                            value={`4${x}`}>4{x}</SelectItem>)}
+              <SelectItem value="5A">5A</SelectItem>
               <SelectItem value="4T" disabled={acc != AccountType.Teacher}>I&apos;m not a form teacher</SelectItem>
             </SelectGroup>
           </SelectContent>

@@ -32,6 +32,7 @@ export default async function Home() {
           {["A", "B", "C", "D", "E", "F", "G", "H", "I"].map(
               (x, index) => <ClassCard key={index} name={`4${x}`} desc="A notable class" url={`/class/4${x}`}/>
           )}
+          <ClassCard name="5A" desc="A year older than 16 years old" url="/class/5A"/>
           <ClassCard name="Teachers" desc="Great people; form teachers should post for their respective classes" url="/class/4T"/>
         </div>
       </main>
