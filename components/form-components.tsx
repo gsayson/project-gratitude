@@ -49,13 +49,13 @@ export function PostForm({ acc, message }: { acc: AccountType, message: PGMessag
         setSubmitting(true)
         setState(await responseMutate(x.get("nickname")!.toString(), x.get("clazz")!.toString(), x.get("response")!.toString(), message.email))
         setSubmitting(false)
-      }} inert={submitting}>
+      }}>
         <TextInput maxLength={20} id="nickname" name="nickname" autoComplete={"off"} autoCorrect={"off"}
-                   autoCapitalize={"off"} spellCheck={false} placeholder={placeholder} title="Nickname"/>
+                   autoCapitalize={"off"} spellCheck={false} placeholder={placeholder} title="Nickname" disabled={submitting}/>
         <TextArea maxLength={300} id="response" name="response" title="Note of gratitude"
-                  placeholder="I am thankful for ..."/>
+                  placeholder="I am thankful for ..." disabled={submitting}/>
         <p className="text-sm my-1">Class</p>
-        <Select required name="clazz">
+        <Select required name="clazz" disabled={submitting}>
           <SelectTrigger className="w-[100%]">
             <SelectValue placeholder="Select your class"/>
           </SelectTrigger>
